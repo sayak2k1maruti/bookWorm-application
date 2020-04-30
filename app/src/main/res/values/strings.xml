@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BookWorm</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="favourite">Favourite</string>
+    <string name="profile">myProfile</string>
+    <string name="about">About</string>
+    <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
