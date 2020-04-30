@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.internshala.bookworm.adapter.DashboardViewAdapter
@@ -44,6 +45,12 @@ class DashboardFragment : Fragment() {
             )   /*adapter object is created*/
         recyclerViewDashboard.adapter = dashboardViewAdapter
         recyclerViewDashboard.layoutManager =layoutManager
+        recyclerViewDashboard.addItemDecoration(
+            DividerItemDecoration(
+                recyclerViewDashboard.context ,
+                (layoutManager as LinearLayoutManager).orientation
+            )
+        )
         return dashBoardView
     }
 
