@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.internshala.bookworm.R
 import com.internshala.bookworm.model.Book
+import com.squareup.picasso.Picasso
 
 class DashboardViewAdapter(private val dataList: ArrayList<Book>, val context: Context) :
     RecyclerView.Adapter<DashboardViewAdapter.DashboardViewHolder>() {
@@ -32,7 +33,7 @@ class DashboardViewAdapter(private val dataList: ArrayList<Book>, val context: C
         holder.author.text = dataList[position].bookAthuor
         holder.price.text = dataList[position].bookPrice
         holder.rating.text = dataList[position].bookRating
-        /*holder.bookImage.setImageResource(dataList[position].bookImage)*/
+        Picasso.get().load(dataList[position].bookImage).into(holder.bookImage)
         holder.parentLinearlayout.setOnClickListener()
         {
             Toast.makeText(context, "Clicked on ${dataList[position].book}", Toast.LENGTH_LONG)
@@ -45,7 +46,7 @@ class DashboardViewAdapter(private val dataList: ArrayList<Book>, val context: C
         var author: TextView = view.findViewById(R.id.txtBookAuthor)
         var price: TextView = view.findViewById(R.id.txtBookPrice)
         var rating: TextView = view.findViewById(R.id.txtBookRating)
-        /*var bookImage: ImageView = view.findViewById(R.id.imgBookImage)*/
+        var bookImage: ImageView = view.findViewById(R.id.imgBookImage)
         var parentLinearlayout: LinearLayout = view.findViewById(R.id.parentLinearLayout)
     }
 
