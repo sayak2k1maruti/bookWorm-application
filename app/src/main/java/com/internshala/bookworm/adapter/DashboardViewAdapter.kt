@@ -28,14 +28,14 @@ class DashboardViewAdapter(private val dataList: ArrayList<Book>, val context: C
     }
 
     override fun onBindViewHolder(holder: DashboardViewHolder, position: Int) {
-        holder.bookName.text = dataList[position].bookName
+        holder.bookName.text = dataList[position].book
         holder.author.text = dataList[position].bookAthuor
         holder.price.text = dataList[position].bookPrice
         holder.rating.text = dataList[position].bookRating
-        holder.bookImage.setImageResource(dataList[position].bookImage)
+        /*holder.bookImage.setImageResource(dataList[position].bookImage)*/
         holder.parentLinearlayout.setOnClickListener()
         {
-            Toast.makeText(context, "Clicked on ${dataList[position].bookName}", Toast.LENGTH_LONG)
+            Toast.makeText(context, "Clicked on ${dataList[position].book}", Toast.LENGTH_LONG)
                 .show()
         }
     }
@@ -45,7 +45,7 @@ class DashboardViewAdapter(private val dataList: ArrayList<Book>, val context: C
         var author: TextView = view.findViewById(R.id.txtBookAuthor)
         var price: TextView = view.findViewById(R.id.txtBookPrice)
         var rating: TextView = view.findViewById(R.id.txtBookRating)
-        var bookImage: ImageView = view.findViewById(R.id.imgBookImage)
+        /*var bookImage: ImageView = view.findViewById(R.id.imgBookImage)*/
         var parentLinearlayout: LinearLayout = view.findViewById(R.id.parentLinearLayout)
     }
 
