@@ -13,15 +13,17 @@
         android:paddingTop="8dp"
         android:paddingRight="6dp" />
 
-    <Button
-        android:id="@+id/btnCheckInternet"
+    <RelativeLayout
+        android:id="@+id/progressBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"
-        android:background="@color/colorPrimary"
-        android:padding="6dp"
-        android:text="@string/check_connectivity" />
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_centerInParent="true"
+            android:padding="10dp" />
+    </RelativeLayout>
 </RelativeLayout>
