@@ -6,10 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
@@ -28,6 +26,10 @@ import com.internshala.bookworm.model.Book
 import com.internshala.bookworm.util.ConnectionManager
 import org.json.JSONException
 import org.json.JSONObject
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class DashboardFragment : Fragment() {
     lateinit var recyclerViewDashboard: RecyclerView
@@ -36,10 +38,18 @@ class DashboardFragment : Fragment() {
     val dataList: ArrayList<Book> = arrayListOf()
     lateinit var progress_circular: ProgressBar
     lateinit var progressBar: RelativeLayout
+    val ratingComparator  = Comparator<Book>{ book1,book2 ->
+            if(book1.bookRating.compareTo(book2.bookRating,true)==0){
+                book1.book.compareTo(book2.book,true)
+            }else{
+                book1.bookRating.compareTo(book2.bookRating,true)
+            }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         val dashBoardView = inflater.inflate(R.layout.fragment_dashboard, container, false)
         recyclerViewDashboard = dashBoardView.findViewById(R.id.recyclerViewDashboard)
         progress_circular = dashBoardView.findViewById(R.id.progress_circular)
@@ -79,7 +89,10 @@ class DashboardFragment : Fragment() {
                         }
 
                     }, Response.ErrorListener {
-                        Toast.makeText(activity, "!!Some error Occurs!!", Toast.LENGTH_LONG).show()
+                        if (activity != null) {
+                            Toast.makeText(activity, "!!Some error Occurs!!", Toast.LENGTH_LONG)
+                                .show()
+                        }
                     }) {
 
                         override fun getHeaders(): MutableMap<String, String> {
@@ -111,5 +124,19 @@ class DashboardFragment : Fragment() {
         }
 
         return dashBoardView
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id==R.id.shortDashboard)
+        {
+            Collections.sort(dataList,ratingComparator)
+            Collections.reverse(dataList)
+        }
+        dashboardViewAdapter.notifyDataSetChanged()
+        return super.onOptionsItemSelected(item)
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.dashboard_fragment_menu,menu)
     }
 }

@@ -15,4 +15,5 @@
     <string name="no_description">No Description</string>
     <string name="add_to_favourites">Add to Favourites</string>
     <string name="author">Author</string>
+    <string name="shortDashboard">Short</string>
 </resources>

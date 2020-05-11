@@ -3,6 +3,7 @@ package com.internshala.bookworm.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
@@ -106,12 +107,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val flag = supportFragmentManager?.findFragmentById(R.id.frame)
-        if(flag == DashboardFragment()){
-            super.onBackPressed()
-        }else{
-            openDashboard()
-            navigationDrawer.setCheckedItem(R.id.dashboard)
+        val flag = supportFragmentManager.findFragmentById(R.id.frame)
+        when(flag){
+            !is DashboardFragment -> {openDashboard()}
+            else -> super.onBackPressed()
         }
+
     }
 }

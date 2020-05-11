@@ -1,66 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum= "2"
-    >
-<ImageView
-    android:id="@+id/imgFaouriteBopokImage"
-    android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:src="@drawable/default_book_cover"
-    android:scaleType="centerCrop"
-    android:layout_margin="6dp"
-    />
-<LinearLayout
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentGridlayout"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    >
+    app:cardCornerRadius="5dp">
+<LinearLayout
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imgFaouriteBopokImage"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center"
+        android:layout_margin="6dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_book_cover" />
+
     <TextView
         android:id="@+id/txtFavouriteBookName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="20sp"
+        android:layout_gravity="center"
         android:layout_margin="3dp"
+        android:text="@string/app_name"
         android:textColor="#000000"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
+        android:maxLines="1"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/txtFavouriteBookAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:text="@string/author"
-        android:textSize="20sp"
+        android:layout_gravity="center"
         android:layout_margin="3dp"
-        android:layout_gravity="center"/>
+        android:text="@string/author"
+        android:maxLines="1"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
     <TextView
+        android:id="@+id/txtFavouriteBookPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="3dp"
         android:text="Rs. 299"
         android:textColor="#357a38"
-        android:textSize="15sp"
+        android:textSize="7sp"
         android:textStyle="bold"
-        android:layout_margin="3dp"
-        android:layout_gravity="center"/>
+        tools:ignore="SmallSp" />
+
     <TextView
         android:id="@+id/txtFavouriteBookRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:drawableLeft="@drawable/ic_ratings"
-        android:drawablePadding="4dp"
         android:layout_margin="3dp"
+        android:drawableStart="@drawable/ic_ratings"
+        android:drawablePadding="4dp"
         android:padding="4dp"
         android:text="4.5"
         android:textColor="#ffca28"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 </LinearLayout>
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>
